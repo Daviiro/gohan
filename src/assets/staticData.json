@@ -1,0 +1,70 @@
+[
+	{
+		"name": "Uramaki",
+		"category": "sushi",
+		"version": [
+			{ "name": "Tradicional", "amount": 8, "price": 29.9 },
+			{
+				"name": "Camarão",
+				"amount": 8,
+				"price": 34.9
+			},
+			{
+				"name": "Skin Couve",
+				"amount": 8,
+				"price": 15.9
+			}
+		],
+		"allYouCanEat": false
+	},
+	{
+		"name": "Sashimi",
+		"category": "sushi",
+		"version": [
+			{ "name": "Tradicional", "amount": 8, "price": 29.9 },
+			{
+				"name": "Tradicional",
+				"amount": 8,
+				"price": 29.9
+			},
+			{
+				"name": "Tradicional",
+				"amount": 16,
+				"price": 49.9
+			}
+		],
+		"allYouCanEat": false
+	},
+	{
+		"name": "Banchá",
+		"category": "sushi",
+		"version": [{ "name": "Tradicional", "amount": 8, "price": 8.9 }],
+		"allYouCanEat": false
+	},
+	{
+		"name": "Sucos",
+		"category": "drinks",
+		"version": [
+			{ "name": "Morango", "amount": 750, "price": 7.5 },
+			{ "name": "Manga", "amount": 750, "price": 7.5 },
+			{ "name": "Maracujá", "amount": 750, "price": 7.5 },
+			{ "name": "Laranja", "amount": 750, "price": 7.5 },
+			{ "name": "Limão", "amount": 750, "price": 7.5 },
+			{ "name": "Uva", "amount": 750, "price": 7.5 },
+			{ "name": "Acerola", "amount": 750, "price": 7.5 }
+		],
+		"allYouCanEat": false
+	},
+	{
+		"name": "Tempura",
+		"category": "sushi",
+		"version": [{ "name": "Tradicional", "amount": -1, "price": 29.9 }],
+		"allYouCanEat": false
+	},
+	{
+		"name": "Hot Roll",
+		"category": "sushi",
+		"version": [{ "name": "Tradicional", "amount": -1, "price": 29.9 }],
+		"allYouCanEat": false
+	}
+]
