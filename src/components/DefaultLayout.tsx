@@ -8,7 +8,6 @@ const DefaultLayout = ({ children }: Props) => {
 	return (
 		<>
 			<Header />
-			<span className="text-xl">Aparecer em todas paginas</span>
 			{children}
 		</>
 	);
