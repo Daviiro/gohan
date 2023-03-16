@@ -3,7 +3,7 @@ import Logo from "../assets/ricebowl.png";
 
 const Header: React.FC = () => {
 	return (
-		<nav className="h-16 bg-red-700">
+		<nav className="h-16 bg-red-700 flex items-center justify-center">
 			<div className="max-w-5xl flex flex-row items-center justify-center items-center h-full">
 				<div className="flex w-16">
 					<span className="text-white text-lg font-semibold">
