@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import DefaultLayout from "@/components/DefaultLayout";
+import DefaultLayout from "@/components/layout";
 
 const inter = Inter({ subsets: ["latin"] });
 

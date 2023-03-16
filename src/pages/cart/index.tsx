@@ -1,5 +1,7 @@
+import DefaultLayout from "@/components/layout";
+
 const Cart: React.FC = () => {
-	return <>Cart page</>;
+	return <DefaultLayout>Cart page</DefaultLayout>;
 };
 
 export default Cart;
