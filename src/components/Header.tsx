@@ -10,7 +10,7 @@ const Header: React.FC = () => {
 			<div className="max-w-5xl flex flex-row items-center justify-center items-center h-full">
 				<div className="flex w-16">
 					<Link href="/" className="flex flex-row h-full w-11">
-						<span className="text-white text-lg font-semibold">
+						<span className="text-white text-lg font-semibold font-['bangers'] mr-1">
 							{t("AppName")}
 						</span>
 						<Image src={Logo} alt="algo" width={55} />
