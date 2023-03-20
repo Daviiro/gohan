@@ -10,6 +10,10 @@ export default function Document() {
 					href="https://fonts.googleapis.com/css2?family=Bangers&family=Niconne&display=swap"
 					rel="stylesheet"
 				/>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+					rel="stylesheet"
+				/>
 			</Head>
 			<body>
 				<Main />

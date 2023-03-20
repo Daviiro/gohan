@@ -17,16 +17,19 @@ const Item: React.FC = () => {
 
 	return (
 		<DefaultLayout>
-			{data.map((item: ItemInterface, index: number) => (
-				<ItemCard
-					key={index}
-					name={item.name}
-					img={item.img}
-					category={item.category}
-					version={item.version}
-					allYouCanEat={item.allYouCanEat}
-				/>
-			))}
+			<div className="bg-violet-100 p-3">
+				{data.map((item: ItemInterface, index: number) => (
+					<ItemCard
+						key={index}
+						name={item.name}
+						img={item.img}
+						desc={item.desc}
+						category={item.category}
+						version={item.version}
+						allYouCanEat={item.allYouCanEat}
+					/>
+				))}
+			</div>
 		</DefaultLayout>
 	);
 };
