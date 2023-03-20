@@ -1,18 +1,35 @@
 import ItemInterface from "@/types/itemInterface";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const ItemCard: React.FC<ItemInterface> = ({
 	name,
 	img,
+	desc,
 	category,
 	version,
 	allYouCanEat,
 }) => {
+	const { t } = useTranslation();
 	return (
-		<div className="grid grid-cols-[1fr_2fr] p-1">
-			<Image src={`/${img}`} alt={name} width={222} height={222} />
-			<div>
-				<span>{name}</span>
+		<div className="max-w-7xl grid grid-cols-[1fr_2fr] p-3 bg-white my-2 mx-auto">
+			<div className="h-60">
+				<Image src={`/${img}`} alt={name} width={222} height={222} />
+			</div>
+
+			<div className="p-4 flex flex-col justify-between">
+				<span className="text-xl text-red-700 font-semibold font-bebas">
+					{name}
+				</span>
+				<span>{desc}</span>
+				<span className="text-center">
+					({allYouCanEat ? t("allYouCanEat") : t("!allYouCanEat")})
+				</span>
+				<div>
+					<button className="float-right bg-black hover:bg-yellow-500 text-white font-bold py-4 px-12 rounded">
+						{t("Add")}
+					</button>
+				</div>
 			</div>
 		</div>
 	);

@@ -5,6 +5,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				bangers: ["Bangers", "cursive"],
+				bebas: ["Bebas Neue", "cursive"],
 			},
 		},
 	},

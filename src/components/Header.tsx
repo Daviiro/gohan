@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 const Header: React.FC = () => {
 	const { t } = useTranslation();
 	return (
-		<nav className="h-16 bg-red-700 flex items-center justify-center">
+		<nav className="h-16 bg-red-700 flex items-center justify-center top-0 sticky">
 			<div className="max-w-5xl flex flex-row items-center justify-center items-center h-full">
 				<div className="flex w-16">
 					<Link href="/" className="flex flex-row h-full w-11">

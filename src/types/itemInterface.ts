@@ -7,6 +7,7 @@ type Version = {
 export default interface ItemInterface {
 	name: string;
 	img: string;
+	desc: string;
 	category: string;
 	version: Version[];
 	allYouCanEat: boolean;

@@ -7,7 +7,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Item: React.FC = () => {
 	const { data, error, isLoading } = useSWR<ItemInterface[]>(
-		"/api/staticData",
+		"/api/items",
 		fetcher
 	);
 
@@ -17,16 +17,19 @@ const Item: React.FC = () => {
 
 	return (
 		<DefaultLayout>
-			{data.map((item: ItemInterface, index: number) => (
-				<ItemCard
-					key={index}
-					name={item.name}
-					img={item.img}
-					category={item.category}
-					version={item.version}
-					allYouCanEat={item.allYouCanEat}
-				/>
-			))}
+			<div className="bg-orange-50 p-3">
+				{data.map((item: ItemInterface, index: number) => (
+					<ItemCard
+						key={index}
+						name={item.name}
+						img={item.img}
+						desc={item.desc}
+						category={item.category}
+						version={item.version}
+						allYouCanEat={item.allYouCanEat}
+					/>
+				))}
+			</div>
 		</DefaultLayout>
 	);
 };

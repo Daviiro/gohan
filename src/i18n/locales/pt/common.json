@@ -1,5 +1,8 @@
 {
 	"translation": {
-		"AppName": "Gohan"
+		"AppName": "Gohan",
+		"Add": "Adicionar",
+		"allYouCanEat": "Incluso no rodizio",
+		"!allYouCanEat": "Não incluso no rodizio"
 	}
 }
