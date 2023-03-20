@@ -7,7 +7,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Item: React.FC = () => {
 	const { data, error, isLoading } = useSWR<ItemInterface[]>(
-		"/api/staticData",
+		"/api/items",
 		fetcher
 	);
 
