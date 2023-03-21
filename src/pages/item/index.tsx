@@ -21,6 +21,7 @@ const Item: React.FC = () => {
 				{data.map((item: ItemInterface, index: number) => (
 					<ItemCard
 						key={index}
+						id={item.id}
 						name={item.name}
 						img={item.img}
 						desc={item.desc}

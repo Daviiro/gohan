@@ -47,7 +47,8 @@ const Checkout: React.FC = () => {
 							type="number"
 							className="outline-none focus:outline-none text-center w-full bg-transparent font-semibold text-2xl hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-black  outline-none hide-spin"
 							name="custom-input-number"
-							defaultValue={peopleAmount}
+							value={peopleAmount}
+							readOnly
 							min={1}
 						/>
 						<button
