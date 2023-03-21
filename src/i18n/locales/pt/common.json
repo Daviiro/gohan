@@ -10,6 +10,10 @@
 		"qty": "QTDE",
 		"product": "Produto",
 		"unit": "unit",
-		"value": "Valor"
+		"value": "Valor",
+		"checkout": "Pedir a Conta",
+		"feedback": "Sugestões/Críticas",
+		"cost_per_person": "Valor por pessoa",
+		"number_of_people": "Nº de pessoas"
 	}
 }

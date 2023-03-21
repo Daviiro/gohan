@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
 
-const ItemList: React.FC = () => {
+const OrderInfo: React.FC = () => {
 	const { t } = useTranslation();
 	return (
-		<div className="flex flex-col justify-between p-2 font-bebas border-r-4 border-dotted h-[93.5vh]">
+		<div className="flex flex-col justify-between p-5 font-bebas border-r-4 border-dotted h-[93.5vh]">
 			<div className="h-5/6 overflow-y-auto text-xl">
 				<table className="table-auto w-full h-auto text-left">
 					<thead>
@@ -52,11 +52,11 @@ const ItemList: React.FC = () => {
 				</div>
 				<div className="h-full flex flex-col items-center justify-around">
 					<span>{t("total")}</span>
-					<span className="text-xl font-bold text-3xl">R$ 19,61</span>
+					<span className="font-bold text-4xl">R$ 19,61</span>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default ItemList;
+export default OrderInfo;

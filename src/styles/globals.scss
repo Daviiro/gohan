@@ -7,4 +7,15 @@
 	margin: 0;
 }
 
+//hide the spin box from input
+@layer base {
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"] {
+		-webkit-appearance: none;
+		margin: 0;
+		-moz-appearance: textfield !important;
+	}
+}
+
 @import "./font.module.scss";
