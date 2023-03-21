@@ -1,8 +1,15 @@
 {
 	"translation": {
 		"AppName": "Gohan",
+		"AppNameJP": "ご飯",
 		"Add": "Adicionar",
 		"allYouCanEat": "Incluso no rodizio",
-		"!allYouCanEat": "Não incluso no rodizio"
+		"!allYouCanEat": "Não incluso no rodizio",
+		"subtotal": "Subtotal",
+		"total": "Total",
+		"qty": "QTDE",
+		"product": "Produto",
+		"unit": "unit",
+		"value": "Valor"
 	}
 }
