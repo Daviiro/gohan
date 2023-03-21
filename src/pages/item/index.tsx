@@ -17,7 +17,7 @@ const Item: React.FC = () => {
 
 	return (
 		<DefaultLayout>
-			<div className="bg-orange-50 p-3">
+			<div className="bg-gray-100 p-3">
 				{data.map((item: ItemInterface, index: number) => (
 					<ItemCard
 						key={index}
