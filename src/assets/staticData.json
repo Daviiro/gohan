@@ -1,17 +1,20 @@
 [
 	{
+		"id": 1,
 		"name": "Uramaki",
 		"img": "urumaki.jpg",
 		"desc": "Delicioso Urumaki feito com os melhores ingredientes do mercado, experimente essa delícia",
 		"category": "food",
 		"version": [
-			{ "name": "Tradicional", "amount": 8, "price": 29.9 },
+			{ "id": 1, "name": "Tradicional", "amount": 8, "price": 29.9 },
 			{
+				"id": 2,
 				"name": "Camarão",
 				"amount": 8,
 				"price": 34.9
 			},
 			{
+				"id": 3,
 				"name": "Skin Couve",
 				"amount": 8,
 				"price": 15.9
@@ -20,18 +23,21 @@
 		"allYouCanEat": false
 	},
 	{
+		"id": 2,
 		"name": "Sashimi",
 		"img": "sashimi.jpg",
 		"desc": "Delicioso Sashimi feito com os melhores ingredientes do mercado, experimente essa delícia",
 		"category": "food",
 		"version": [
-			{ "name": "Tradicional", "amount": 8, "price": 29.9 },
+			{ "id": 1, "name": "Tradicional", "amount": 8, "price": 29.9 },
 			{
+				"id": 2,
 				"name": "Tradicional",
-				"amount": 8,
-				"price": 29.9
+				"amount": 12,
+				"price": 39.9
 			},
 			{
+				"id": 3,
 				"name": "Tradicional",
 				"amount": 16,
 				"price": 49.9
@@ -40,43 +46,53 @@
 		"allYouCanEat": false
 	},
 	{
+		"id": 3,
 		"name": "Banchá",
 		"img": "bancha.png",
 		"desc": "Delicioso chá feito com os melhores ingredientes do mercado, experimente essa delícia",
 		"category": "drink",
-		"version": [{ "name": "Tradicional", "amount": 750, "price": 8.9 }],
+		"version": [
+			{ "id": 1, "name": "Tradicional", "amount": 750, "price": 8.9 }
+		],
 		"allYouCanEat": false
 	},
 	{
+		"id": 4,
 		"name": "Sucos",
 		"img": "suco.jpg",
 		"desc": "Delicioso suco feito com as melhores frutas do mercado, experimente essa delícia",
 		"category": "drink",
 		"version": [
-			{ "name": "Morango", "amount": 750, "price": 7.5 },
-			{ "name": "Manga", "amount": 750, "price": 7.5 },
-			{ "name": "Maracujá", "amount": 750, "price": 7.5 },
-			{ "name": "Laranja", "amount": 750, "price": 7.5 },
-			{ "name": "Limão", "amount": 750, "price": 7.5 },
-			{ "name": "Uva", "amount": 750, "price": 7.5 },
-			{ "name": "Acerola", "amount": 750, "price": 7.5 }
+			{ "id": 1, "name": "Morango", "amount": 750, "price": 7.5 },
+			{ "id": 2, "name": "Manga", "amount": 750, "price": 7.5 },
+			{ "id": 3, "name": "Maracujá", "amount": 750, "price": 7.5 },
+			{ "id": 4, "name": "Laranja", "amount": 750, "price": 7.5 },
+			{ "id": 5, "name": "Limão", "amount": 750, "price": 7.5 },
+			{ "id": 6, "name": "Uva", "amount": 750, "price": 7.5 },
+			{ "id": 7, "name": "Acerola", "amount": 750, "price": 7.5 }
 		],
 		"allYouCanEat": false
 	},
 	{
+		"id": 5,
 		"name": "Tempura",
 		"img": "tempura.jpg",
 		"desc": "Delicioso Tempura feito com os melhores ingredientes do mercado, experimente essa delícia",
 		"category": "food",
-		"version": [{ "name": "Tradicional", "amount": -1, "price": 29.9 }],
+		"version": [
+			{ "id": 1, "name": "Tradicional", "amount": -1, "price": 29.9 }
+		],
 		"allYouCanEat": false
 	},
 	{
+		"id": 6,
 		"name": "Hot Roll",
 		"img": "hotroll.jpg",
 		"desc": "Delicioso Hot Roll feito com os melhores ingredientes do mercado, experimente essa delícia",
 		"category": "food",
-		"version": [{ "name": "Tradicional", "amount": -1, "price": 29.9 }],
+		"version": [
+			{ "id": 1, "name": "Tradicional", "amount": -1, "price": 29.9 }
+		],
 		"allYouCanEat": false
 	}
 ]
