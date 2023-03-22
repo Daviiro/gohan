@@ -23,16 +23,19 @@ export const cartSlice = createSlice({
 		},
 		subItem: (state, action: PayloadAction<OnCartItemInterface>) => {
 			const existingItem = state.find(
-				(item) => item.name === action.payload.name
+				(item) =>
+					item.name === action.payload.name &&
+					item.flavor === action.payload.flavor &&
+					item.size === action.payload.size
 			);
 			if (!existingItem) return;
 
 			if (existingItem.amount === 1) {
 				state = state.filter(
 					(item) =>
-						item.name !== action.payload.name ||
-						item.flavor !== action.payload.flavor ||
-						item.size !== action.payload.size
+						item.name !== existingItem.name ||
+						item.flavor !== existingItem.flavor ||
+						item.size !== existingItem.size
 				);
 				return state;
 			}

@@ -1,7 +1,15 @@
+import { RootState } from "@/store/store";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 const OrderInfo: React.FC = () => {
+	const itemsOnCart = useSelector((state: RootState) => state.cart);
 	const { t } = useTranslation();
+
+	const orderTotal = itemsOnCart.reduce((accumulator, object) => {
+		return accumulator + object.price * object.amount;
+	}, 0);
+
 	return (
 		<div className="flex flex-col justify-between p-5 font-bebas border-r-4 border-dotted h-[93.5vh]">
 			<div className="h-5/6 overflow-y-auto text-xl">
@@ -15,30 +23,20 @@ const OrderInfo: React.FC = () => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td className="w-1/6">1</td>
-							<td className="w-3/6">Malcolm Lockyer</td>
-							<td className="w-1/6">R$ 19,61</td>
-							<td className="w-1/6">R$ 19,61</td>
-						</tr>
-						<tr>
-							<td className="w-1/6">1</td>
-							<td>The Eagles</td>
-							<td>R$ 19,72</td>
-							<td>R$ 19,61</td>
-						</tr>
-						<tr>
-							<td className="w-1/6">1</td>
-							<td>Earth, Wind, and Fire</td>
-							<td>R$ 19,75</td>
-							<td>R$ 19,61</td>
-						</tr>
-						<tr>
-							<td className="w-1/6">1</td>
-							<td>Earth, Wind, and Fire</td>
-							<td>R$ 19,75</td>
-							<td>R$ 19,61</td>
-						</tr>
+						{itemsOnCart.map((item) => (
+							<tr>
+								<td className="w-1/6">{item.amount}</td>
+								<td className="w-3/6">
+									{item.name} - {item.flavor} - {item.size}
+								</td>
+								<td className="w-1/6">
+									R$ {item.price.toFixed(2)}
+								</td>
+								<td className="w-1/6">
+									R$ {(item.price * item.amount).toFixed(2)}
+								</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
@@ -48,11 +46,13 @@ const OrderInfo: React.FC = () => {
 					<span>{t("subtotal")}</span>
 				</div>
 				<div>
-					<span>R$ 19,61</span>
+					<span>R$ {orderTotal.toFixed(2)}</span>
 				</div>
 				<div className="h-full flex flex-col items-center justify-around">
 					<span>{t("total")}</span>
-					<span className="font-bold text-4xl">R$ 19,61</span>
+					<span className="font-bold text-4xl">
+						R$ {orderTotal.toFixed(2)}
+					</span>
 				</div>
 			</div>
 		</div>
