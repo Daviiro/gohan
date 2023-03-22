@@ -27,7 +27,8 @@ const OrderInfo: React.FC = () => {
 							<tr>
 								<td className="w-1/6">{item.amount}</td>
 								<td className="w-3/6">
-									{item.name} - {item.flavor} - {item.size}
+									{item.name} - {item.flavor}
+									{item.size !== -1 ? ` - ${item.size}` : ""}
 								</td>
 								<td className="w-1/6">
 									R$ {item.price.toFixed(2)}

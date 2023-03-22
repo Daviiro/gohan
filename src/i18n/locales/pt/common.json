@@ -14,6 +14,8 @@
 		"checkout": "Pedir a Conta",
 		"feedback": "Sugestões/Críticas",
 		"cost_per_person": "Valor por pessoa",
-		"number_of_people": "Nº de pessoas"
+		"number_of_people": "Nº de pessoas",
+		"go_back": "Voltar",
+		"cart": "Pedido"
 	}
 }
