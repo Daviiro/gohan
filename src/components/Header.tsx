@@ -18,7 +18,7 @@ const Header: React.FC = () => {
 					) : (
 						<button type="button" onClick={() => router.back()}>
 							<span className="flex flex-rol items-center">
-								<IoIosArrowBack size={36} /> {t("go_back")}
+								<IoIosArrowBack size={36} /> {t("goBack")}
 							</span>
 						</button>
 					)}
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
 				<div className="flex w-16">
 					<Link href="/" className="flex flex-row w-11">
 						<span className="text-white text-lg font-semibold font-['bangers'] mr-1">
-							{t("AppName")}
+							{t("appName")}
 						</span>
 						<Image src={Logo} alt="algo" width={55} />
 					</Link>
