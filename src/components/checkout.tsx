@@ -23,7 +23,7 @@ const Checkout: React.FC = () => {
 				<div className="w-full h-1/6 flex flex-row items-center justify-center">
 					<BiGroup size={25} />
 					<span className="font-bold text-xl">
-						{t("cost_per_person")}
+						{t("costPerPerson")}
 					</span>
 				</div>
 				<div className="w-1/2">
@@ -31,7 +31,7 @@ const Checkout: React.FC = () => {
 						htmlFor="custom-input-number"
 						className="w-full text-gray-700 text-sm font-semibold"
 					>
-						{t("number_of_people")}
+						{t("numberOfPeople")}
 					</label>
 					<div className="flex flex-row h-14 w-full rounded-lg relative bg-transparent mt-1 border-2 border-red-700">
 						<button

@@ -200,7 +200,7 @@ const ItemCard: React.FC<ItemInterface> = ({
 							)
 						}
 					>
-						{t("Add")}
+						{t("add")}
 					</button>
 				</div>
 			</div>

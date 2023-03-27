@@ -1,21 +1,20 @@
 {
 	"translation": {
-		"AppName": "Gohan",
-		"AppNameJP": "ご飯",
-		"Add": "Adicionar",
+		"appName": "Gohan",
+		"add": "Adicionar",
 		"allYouCanEat": "Incluso no rodizio",
 		"!allYouCanEat": "Não incluso no rodizio",
 		"subtotal": "Subtotal",
 		"total": "Total",
-		"qty": "QTDE",
+		"qty": "Qtd.",
 		"product": "Produto",
-		"unit": "unit",
+		"unit": "Unidade",
 		"value": "Valor",
 		"checkout": "Pedir a Conta",
 		"feedback": "Sugestões/Críticas",
-		"cost_per_person": "Valor por pessoa",
-		"number_of_people": "Nº de pessoas",
-		"go_back": "Voltar",
+		"costPerPerson": "Valor por pessoa",
+		"numberOfPeople": "Nº de pessoas",
+		"goBack": "Voltar",
 		"cart": "Pedido"
 	}
 }
