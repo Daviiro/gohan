@@ -23,8 +23,8 @@ const OrderInfo: React.FC = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{itemsOnCart.map((item) => (
-							<tr>
+						{itemsOnCart.map((item, index) => (
+							<tr key={index}>
 								<td className="w-1/6">{item.amount}</td>
 								<td className="w-3/6">
 									{item.name} - {item.flavor}
