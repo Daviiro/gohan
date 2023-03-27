@@ -7,3 +7,6 @@ Regras de Negocio
  - Deve ter uma lista com o total de itens que já foi pedido 
  - A listagem deve ser distribuida conforme a categoria dela 
  - Deve ser possivel adicionar qualquer quantidade de itens no carrinho
+
+
+https://master--graceful-faun-ca790f.netlify.app/
