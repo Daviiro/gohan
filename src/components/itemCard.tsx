@@ -69,9 +69,9 @@ const ItemCard: React.FC<ItemInterface> = ({
 					version.map((ver, index) => (
 						<div
 							key={index}
-							className="flex flex-row justify-between"
+							className="flex flex-row justify-between mb-4 items-center"
 						>
-							<div className="flex items-center mb-4 w-5/6">
+							<div className="flex w-5/6 ">
 								<input
 									defaultChecked={ver.id === 1}
 									id={name + String(ver.id)}
@@ -101,36 +101,87 @@ const ItemCard: React.FC<ItemInterface> = ({
 							<div className="w-1/6">
 								<span>
 									{isOnCart(ver.name, ver.amount) ? (
-										<button
-											className="float-right bg-transparent hover:bg-gray-200 text-white font-bold  px-4 w-10 text-center rounded
-											flex justify-center items-center select-none focus:outline-none focus:shadow-outline"
-											onClick={() =>
-												dispatch(
-													subItem({
-														name,
-														flavor: ver.name,
-														size: ver.amount,
-														price: ver.price,
-														category,
-														amount: 1,
-														allYouCanEat,
-													})
-												)
-											}
-										>
+										<>
 											{amountOnCart(
 												ver.name,
 												ver.amount
 											) === 1 ? (
-												<span className="text-red-700">
+												<span
+													className="text-red-700 hover:bg-gray-200 p-1 rounded flex flex-row justify-center cursor-pointer"
+													onClick={() =>
+														dispatch(
+															subItem({
+																name,
+																flavor: ver.name,
+																size: ver.amount,
+																price: ver.price,
+																category,
+																amount: 1,
+																allYouCanEat,
+															})
+														)
+													}
+												>
 													<BsTrash />
 												</span>
 											) : (
-												<span className="text-red-700">
-													-
-												</span>
+												<div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent ">
+													<button
+														data-action="decrement"
+														className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
+														onClick={() =>
+															dispatch(
+																subItem({
+																	name,
+																	flavor: ver.name,
+																	size: ver.amount,
+																	price: ver.price,
+																	category,
+																	amount: 1,
+																	allYouCanEat,
+																})
+															)
+														}
+													>
+														<span className="m-auto text-xl font-semibold text-red-700">
+															−
+														</span>
+													</button>
+													<input
+														type="number"
+														className="outline-none focus:outline-none text-center w-full bg-transparent font-semibold text-xl hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-black  outline-none hide-spin"
+														name="custom-input-number"
+														value={amountOnCart(
+															ver.name,
+															ver.amount
+														)}
+														readOnly
+														min={1}
+													/>
+													<button
+														data-action="increment"
+														className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
+														onClick={() =>
+															dispatch(
+																addItem({
+																	name,
+																	flavor: ver.name,
+																	size: ver.amount,
+																	price: ver.price,
+																	category,
+																	amount: 1,
+																	allYouCanEat,
+																})
+															)
+														}
+													>
+														<span className="m-auto text-xl font-semibold text-red-700">
+															+
+														</span>
+													</button>
+												</div>
 											)}
-										</button>
+										</>
 									) : (
 										<></>
 									)}
@@ -145,34 +196,93 @@ const ItemCard: React.FC<ItemInterface> = ({
 						</div>
 						<div className="w-1/6">
 							{isOnCart(version[0].name, version[0].amount) ? (
-								<button
-									className="float-right bg-transparent hover:bg-gray-200 text-white font-bold  px-4 w-10 text-center rounded
-											flex justify-center items-center select-none focus:outline-none focus:shadow-outline"
-									onClick={() =>
-										dispatch(
-											subItem({
-												name,
-												flavor: version[0].name,
-												size: version[0].amount,
-												price: version[0].price,
-												category,
-												amount: 1,
-												allYouCanEat,
-											})
-										)
-									}
-								>
+								<>
 									{amountOnCart(
 										version[0].name,
 										version[0].amount
 									) === 1 ? (
-										<span className="text-red-700">
+										<span
+											className="text-red-700 hover:bg-gray-200 p-1 rounded flex flex-row justify-center cursor-pointer"
+											onClick={() =>
+												dispatch(
+													subItem({
+														name,
+														flavor: version[0].name,
+														size: version[0].amount,
+														price: version[0].price,
+														category,
+														amount: 1,
+														allYouCanEat,
+													})
+												)
+											}
+										>
 											<BsTrash />
 										</span>
 									) : (
-										<span className="text-red-700">-</span>
+										<div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent ">
+											<button
+												data-action="decrement"
+												className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
+												onClick={() =>
+													dispatch(
+														subItem({
+															name,
+															flavor: version[0]
+																.name,
+															size: version[0]
+																.amount,
+															price: version[0]
+																.price,
+															category,
+															amount: 1,
+															allYouCanEat,
+														})
+													)
+												}
+											>
+												<span className="m-auto text-xl font-semibold text-red-700">
+													−
+												</span>
+											</button>
+											<input
+												type="number"
+												className="outline-none focus:outline-none text-center w-full bg-transparent font-semibold text-xl hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-black  outline-none hide-spin"
+												name="custom-input-number"
+												value={amountOnCart(
+													version[0].name,
+													version[0].amount
+												)}
+												readOnly
+												min={1}
+											/>
+											<button
+												data-action="increment"
+												className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
+												onClick={() =>
+													dispatch(
+														addItem({
+															name,
+															flavor: version[0]
+																.name,
+															size: version[0]
+																.amount,
+															price: version[0]
+																.price,
+															category,
+															amount: 1,
+															allYouCanEat,
+														})
+													)
+												}
+											>
+												<span className="m-auto text-xl font-semibold text-red-700">
+													+
+												</span>
+											</button>
+										</div>
 									)}
-								</button>
+								</>
 							) : (
 								<></>
 							)}
