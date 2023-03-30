@@ -9,12 +9,6 @@ export const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addItem: (state, action: PayloadAction<OnCartItemInterface>) => {
-			console.log(
-				"fui invocado",
-				action.payload.name,
-				action.payload.flavor,
-				action.payload.size
-			);
 			const existingItem = state.find(
 				(item) =>
 					item.name === action.payload.name &&
@@ -24,7 +18,6 @@ export const cartSlice = createSlice({
 			if (!existingItem) {
 				return [action.payload, ...state];
 			}
-			console.log("cheguei ateh aqui");
 			existingItem.amount++;
 			return;
 		},
