@@ -19,41 +19,74 @@ const ItemCard: React.FC<ItemInterface> = ({
 	const itemsOnCart = useSelector((state: RootState) => state.cart);
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
-	const [chosenItem, setChosenItem] = useState({
+
+	const [selectedItem, setSelectedItem] = useState({
 		flavor: version[0].name,
 		size: version[0].amount,
 		price: version[0].price,
 	});
 
-	const handleChoiceChange = (id: number) => {
-		if (version[id - 1]) {
-			const newChoice = {
-				flavor: version[id - 1].name,
-				size: version[id - 1].amount,
-				price: version[id - 1].price,
+	const handleSelectedItem = (id: number) => {
+		id = id - 1;
+		if (version[id]) {
+			const newSelectedItem = {
+				flavor: version[id].name,
+				size: version[id].amount,
+				price: version[id].price,
 			};
-			setChosenItem(newChoice);
+			setSelectedItem(newSelectedItem);
 		}
 	};
 
-	const isOnCart = (item_version: string, item_size: number) => {
+	const isItemOnCart = (itemVersion: string, itemSize: number) => {
 		const exists = itemsOnCart.find(
 			(item) =>
 				item.name === name &&
-				item.flavor === item_version &&
-				item.size === item_size
+				item.flavor === itemVersion &&
+				item.size === itemSize
 		);
 		return exists;
 	};
 
-	const amountOnCart = (item_version: string, item_size: number) => {
-		const exists = isOnCart(item_version, item_size);
+	const itemQtyOnCart = (itemVersion: string, itemSize: number) => {
+		const exists = isItemOnCart(itemVersion, itemSize);
 
 		return exists?.amount;
 	};
 
+	const handleItemAdd = (flavor: string, size: number, price: number) => {
+		dispatch(
+			addItem({
+				name,
+				flavor: flavor,
+				size: size,
+				price: price,
+				category,
+				amount: 1,
+				allYouCanEat,
+			})
+		);
+	};
+
+	const handleItemSub = (flavor: string, size: number, price: number) => {
+		dispatch(
+			subItem({
+				name,
+				flavor: flavor,
+				size: size,
+				price: price,
+				category,
+				amount: 1,
+				allYouCanEat,
+			})
+		);
+	};
+
 	return (
-		<div className="max-w-7xl grid grid-cols-[1fr_2fr] p-3 bg-white my-2 mx-auto">
+		<div
+			className="max-w-7xl grid grid-cols-[1fr_2fr] p-3 bg-white my-2 mx-auto"
+			key={id}
+		>
 			<div className="h-60">
 				<Image src={`/${img}`} alt={name} width={222} height={222} />
 			</div>
@@ -65,12 +98,12 @@ const ItemCard: React.FC<ItemInterface> = ({
 				<span>{desc}</span>
 				<br />
 
-				{version.length > 1 ? (
-					version.map((ver, index) => (
-						<div
-							key={index}
-							className="flex flex-row justify-between mb-4 items-center"
-						>
+				{version.map((ver, index, versionsRef) => (
+					<div
+						key={index}
+						className="flex flex-row justify-between mb-4 items-center"
+					>
+						{versionsRef.length > 1 ? (
 							<div className="flex w-5/6 ">
 								<input
 									defaultChecked={ver.id === 1}
@@ -80,7 +113,7 @@ const ItemCard: React.FC<ItemInterface> = ({
 									name={name}
 									className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
 									onChange={() => {
-										handleChoiceChange(ver.id);
+										handleSelectedItem(ver.id);
 									}}
 								/>
 								<label
@@ -98,197 +131,80 @@ const ItemCard: React.FC<ItemInterface> = ({
 									R${ver.price.toFixed(2)}
 								</label>
 							</div>
-							<div className="w-1/6">
-								<span>
-									{isOnCart(ver.name, ver.amount) ? (
-										<>
-											{amountOnCart(
-												ver.name,
-												ver.amount
-											) === 1 ? (
-												<span
-													className="text-red-700 hover:bg-gray-200 p-1 rounded flex flex-row justify-center cursor-pointer"
+						) : (
+							<div className="flex items-center mb-4 w-5/6">
+								<span>R${ver.price.toFixed(2)}</span>
+							</div>
+						)}
+						<div className="w-1/6">
+							<span>
+								{isItemOnCart(ver.name, ver.amount) && (
+									<>
+										{itemQtyOnCart(ver.name, ver.amount) ===
+										1 ? (
+											<span
+												className="text-red-700 hover:bg-gray-200 p-1 rounded flex flex-row justify-center cursor-pointer"
+												onClick={() =>
+													handleItemSub(
+														ver.name,
+														ver.amount,
+														ver.price
+													)
+												}
+											>
+												<BsTrash />
+											</span>
+										) : (
+											<div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent ">
+												<button
+													data-action="decrement"
+													className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
 													onClick={() =>
-														dispatch(
-															subItem({
-																name,
-																flavor: ver.name,
-																size: ver.amount,
-																price: ver.price,
-																category,
-																amount: 1,
-																allYouCanEat,
-															})
+														handleItemSub(
+															ver.name,
+															ver.amount,
+															ver.price
 														)
 													}
 												>
-													<BsTrash />
-												</span>
-											) : (
-												<div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent ">
-													<button
-														data-action="decrement"
-														className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
-														onClick={() =>
-															dispatch(
-																subItem({
-																	name,
-																	flavor: ver.name,
-																	size: ver.amount,
-																	price: ver.price,
-																	category,
-																	amount: 1,
-																	allYouCanEat,
-																})
-															)
-														}
-													>
-														<span className="m-auto text-xl font-semibold text-red-700">
-															−
-														</span>
-													</button>
-													<input
-														type="number"
-														className="outline-none focus:outline-none text-center w-full bg-transparent font-semibold text-xl hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-black  outline-none hide-spin"
-														name="custom-input-number"
-														value={amountOnCart(
+													<span className="m-auto text-xl font-semibold text-red-700">
+														−
+													</span>
+												</button>
+												<input
+													type="number"
+													className="outline-none focus:outline-none text-center w-full bg-transparent font-semibold text-xl hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-black  outline-none hide-spin"
+													name="custom-input-number"
+													value={itemQtyOnCart(
+														ver.name,
+														ver.amount
+													)}
+													readOnly
+													min={1}
+												/>
+												<button
+													data-action="increment"
+													className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
+													onClick={() =>
+														handleItemAdd(
 															ver.name,
-															ver.amount
-														)}
-														readOnly
-														min={1}
-													/>
-													<button
-														data-action="increment"
-														className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
-														onClick={() =>
-															dispatch(
-																addItem({
-																	name,
-																	flavor: ver.name,
-																	size: ver.amount,
-																	price: ver.price,
-																	category,
-																	amount: 1,
-																	allYouCanEat,
-																})
-															)
-														}
-													>
-														<span className="m-auto text-xl font-semibold text-red-700">
-															+
-														</span>
-													</button>
-												</div>
-											)}
-										</>
-									) : (
-										<></>
-									)}
-								</span>
-							</div>
-						</div>
-					))
-				) : (
-					<div className="flex flex-row justify-between">
-						<div className="flex items-center mb-4 w-5/6">
-							<span>R${version[0].price.toFixed(2)}</span>
-						</div>
-						<div className="w-1/6">
-							{isOnCart(version[0].name, version[0].amount) ? (
-								<>
-									{amountOnCart(
-										version[0].name,
-										version[0].amount
-									) === 1 ? (
-										<span
-											className="text-red-700 hover:bg-gray-200 p-1 rounded flex flex-row justify-center cursor-pointer"
-											onClick={() =>
-												dispatch(
-													subItem({
-														name,
-														flavor: version[0].name,
-														size: version[0].amount,
-														price: version[0].price,
-														category,
-														amount: 1,
-														allYouCanEat,
-													})
-												)
-											}
-										>
-											<BsTrash />
-										</span>
-									) : (
-										<div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent ">
-											<button
-												data-action="decrement"
-												className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
-												onClick={() =>
-													dispatch(
-														subItem({
-															name,
-															flavor: version[0]
-																.name,
-															size: version[0]
-																.amount,
-															price: version[0]
-																.price,
-															category,
-															amount: 1,
-															allYouCanEat,
-														})
-													)
-												}
-											>
-												<span className="m-auto text-xl font-semibold text-red-700">
-													−
-												</span>
-											</button>
-											<input
-												type="number"
-												className="outline-none focus:outline-none text-center w-full bg-transparent font-semibold text-xl hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-black  outline-none hide-spin"
-												name="custom-input-number"
-												value={amountOnCart(
-													version[0].name,
-													version[0].amount
-												)}
-												readOnly
-												min={1}
-											/>
-											<button
-												data-action="increment"
-												className="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
-												onClick={() =>
-													dispatch(
-														addItem({
-															name,
-															flavor: version[0]
-																.name,
-															size: version[0]
-																.amount,
-															price: version[0]
-																.price,
-															category,
-															amount: 1,
-															allYouCanEat,
-														})
-													)
-												}
-											>
-												<span className="m-auto text-xl font-semibold text-red-700">
-													+
-												</span>
-											</button>
-										</div>
-									)}
-								</>
-							) : (
-								<></>
-							)}
+															ver.amount,
+															ver.price
+														)
+													}
+												>
+													<span className="m-auto text-xl font-semibold text-red-700">
+														+
+													</span>
+												</button>
+											</div>
+										)}
+									</>
+								)}
+							</span>
 						</div>
 					</div>
-				)}
+				))}
 				<br />
 				<span className="text-center">
 					({allYouCanEat ? t("allYouCanEat") : t("!allYouCanEat")})
@@ -297,16 +213,10 @@ const ItemCard: React.FC<ItemInterface> = ({
 					<button
 						className="float-right bg-black hover:bg-yellow-500 text-white font-bold py-4 px-12 rounded"
 						onClick={() =>
-							dispatch(
-								addItem({
-									name,
-									flavor: chosenItem.flavor,
-									size: chosenItem.size,
-									price: chosenItem.price,
-									category,
-									amount: 1,
-									allYouCanEat,
-								})
+							handleItemAdd(
+								selectedItem.flavor,
+								selectedItem.size,
+								selectedItem.price
 							)
 						}
 					>
