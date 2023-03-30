@@ -10,7 +10,7 @@ const Header: React.FC = () => {
 	const router = useRouter();
 
 	return (
-		<nav className="h-16 bg-red-700 flex items-center justify-center top-0 sticky">
+		<nav className="h-16 bg-red-700 flex items-center justify-center top-0 sticky z-50">
 			<div className="w-full flex flex-row  justify-between px-12">
 				<div className="flex w-16 text-white font-semibold font-bebas text-2xl">
 					{router.pathname === "/" ? (
